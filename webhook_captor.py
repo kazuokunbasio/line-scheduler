@@ -41,12 +41,17 @@ def on_msg(e):
     if e.message.text.strip().lower() == "id":
         api.reply_message(e.reply_token, TextSendMessage(text=f"USER_ID={uid}\nNAME={name}\nGROUP_ID={gid}"))
 
+@app.route("/ping", methods=["GET", "HEAD"])
+def ping():
+    return ("", 204)
+    
 @app.get("/")
 def health():
     return "alive", 200
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 8000)
+
 
 
 
