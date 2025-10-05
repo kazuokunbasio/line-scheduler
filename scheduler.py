@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
@@ -137,3 +137,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
