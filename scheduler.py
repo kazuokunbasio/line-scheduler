@@ -136,6 +136,11 @@ def main():
     sch.start()
 
 if __name__ == "__main__":
-    main()
+    # ローカルで直接実行した時用：落ちないように常駐
+    start_scheduler()
+    import time
+    while True:
+        time.sleep(3600)
+
 
 
