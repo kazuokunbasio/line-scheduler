@@ -9,6 +9,7 @@ from scheduler import start_scheduler
 
 load_dotenv()
 app = Flask(__name__)
+start_scheduler()   # Gunicorn -w 1 なので二重起動しません
 SECRET = os.getenv("CHANNEL_SECRET")
 TOKEN  = os.getenv("CHANNEL_ACCESS_TOKEN")
 api = LineBotApi(TOKEN)
@@ -41,6 +42,11 @@ def on_msg(e):
     if e.message.text.strip().lower() == "id":
         api.reply_message(e.reply_token, TextSendMessage(text=f"USER_ID={uid}\nNAME={name}\nGROUP_ID={gid}"))
 
+@app.get("/")
+def health():
+    return "alive", 200
+
 if __name__ == "__main__":
     app.run("0.0.0.0", 8000)
+
 
