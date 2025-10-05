@@ -3,9 +3,8 @@ from flask import Flask, request, abort
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, JoinEvent
+from linebot.models import MessageEvent, TextMessage, JoinEvent, TextSendMessage
 from scheduler import start_scheduler
-
 
 load_dotenv()
 app = Flask(__name__)
@@ -48,5 +47,6 @@ def health():
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 8000)
+
 
 
