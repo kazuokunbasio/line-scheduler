@@ -120,7 +120,7 @@ def d_2200_group2():
 
 def main():
     tz = "Asia/Tokyo"
-    sch = BlockingScheduler(timezone=tz)
+    sch = BackgroundScheduler(timezone="Asia/Tokyo")
     # 既存
     sch.add_job(d_0600, CronTrigger(hour=6))
     sch.add_job(d_1200, CronTrigger(hour=12))
@@ -137,4 +137,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
